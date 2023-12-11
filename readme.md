@@ -16,3 +16,7 @@ remote - for back up
 you can initialize your local repository and pull or push the changes from and to remote repo
 
 local repo has three stages: working area (the files with the changes), staging area (the files ready to be pushed) and commited files
+
+when you commit changes commits are created 
+
+image.png
