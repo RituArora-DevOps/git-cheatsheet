@@ -1,0 +1,58 @@
+git init    #creates a hidden .git directory
+
+ls -a
+
+touch cat-and-mouse.txt
+echo "A cat is after the mouse" >> story.txt
+
+git status   #to fnd you are on which branch, show commits
+# shows untracked files 
+
+----
+output: On branch master
+
+No commits yet
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        cat-and-mouse.txt
+
+nothing added to commit but untracked files present (use "git add" to track)
+----
+
+git add cat-and-mouse.txt   #adds the file to stagging area
+
+----
+A commit records the change in the repository compared to its previous state. But before that we must configure the git user who will be the owner of the commit.
+
+Set git username as username and user email as email@example.com using the below commands.
+
+git config user.email email@example.com
+
+git config user.name username
+
+git commit -m "added first story"   #to report the changes in the current and previous commits
+----
+
+Let's commit our change! In this case, we didn't have any previous commits,
+so the addition of the file cat-and-mouse.txt is a change compared to its previous state.
+Commit the files that are currently in the staging area.
+
+
+First check the status of the file using the command git status. Then commit using the commit message as Added the cat and mouse story
+---
+
+"git add ." command git will start to track the file.
+
+----
+add the file to a .gitignore file
+
+echo file-to-be-ignored.txt >> .gitignore
+As you might have noticed the .gitignore file itself may be listed as untracked. It is a good practice to track the .gitignore file with git.
+
+---
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+
+---
