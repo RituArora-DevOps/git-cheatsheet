@@ -19,4 +19,4 @@ local repo has three stages: working area (the files with the changes), staging 
 
 when you commit changes commits are created 
 
-image.png
+![image](https://github.com/RituArora-DevOps/git-cheatsheet/assets/130247456/333ae241-621a-4151-b67d-74268821474c)

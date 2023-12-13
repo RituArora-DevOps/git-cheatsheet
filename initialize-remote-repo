@@ -1,0 +1,140 @@
+Popular platforms:
+
+GitHub, GitLab, BitBucket
+
+Note: Gitea - A lighter version of the Github
+
+Once you initialize a repository you get a connection string, for th egit to know where the repository is located 
+
+example of connection string:
+https://...//.../[name].git
+
+https://github//.../[name].git
+https://gitlab//.../[name].git
+https://bitbucket//.../[name].git
+
+## you can add remote repo to our local project 
+ $ git remote add origin https://...//.../[name].git
+
+ we want to add a remote repo and give it an alias "origin" so that we always know which remote repo we are pushing to without memorizing the connection string
+
+## to list all the remote repo 
+
+ $ git remote -v
+
+In order to get the data you can push or fetch data
+
+## push to remote repo
+
+ $ git push origin master
+
+origin = alias over git repo
+master = current branch we are on
+* master is the default branch 
+
+Unless you push the new commits to remote repo, your local and remote are not synced
+
+# Questions
+
+ $ git log   //to check the number of commits and for each commit you get the name of the auth who commited the code and date the commit was created
+
+## cloning remote repositories
+
+ $ git clone [ SSH link ]    //by default this will create a folder locally by the same name as your remote repository
+
+You might get an error after cloning: Please tell me who you are 
+
+This is because you have cloned the repository, but Git doesn't know who you are. You need to tell Git your username and email address. 
+For this use the command 
+ $ git config user.email "email@example.com" and 
+ $ git config user.name "name"
+
+this must be followed by 
+ $ git add 
+ $ git commit -m "message" 
+ $ git push origin master 
+ if you have new changes to commit
+
+Now you do not have to add remote repository using $git remote add origin 
+because you have already added the remote repository when you cloned it 
+
+# Issues when you are pushing commits to a public repository:
+
+If you ran into an issue it is because the repository is public but not everyone can change it. It is public but read-only. To push changes to the repository you need to be a collaborator or a member of the project.
+
+The account owner needs to add you as a collaborator. Github UI as account owner 
+go to Settings -> Collaborators of the project and add an user as collaborate with Write permissions.
+
+# Creating branch 
+
+The master branch is the final version of the story. It should always only have content that has been reviewed and approved. We cannot just allow everyone to directly push to the master branch. So let's do it the right way this time.
+
+## to find tracked, modified, stagged, untracked files
+$ git status
+
+When a file is not tracked you can switch to a new branch from the master branch and commit the file to the new branch. It is not the good idea to push the new content directky to the master branch w/o review and approval. Create a new branch by using git checkout. this command creates a new branch if already not present and then let you switch from your current to the new branch.
+
+ $ git checkout -b master-branch/new-branch; git add .; git commit -m 'Added new branch to story'
+ $ git push origin master-branch/new-branch
+ (you have to enter your credentials)
+
+# pull request (Also called PR)
+
+Depicted by example:
+
+Max has pushed his story, but his story is still not in the Master branch. Let's create a Pull Request(PR) to merge Max's story/fox-and-grapes branch into the master branch
+
+
+Click on Git Portal UI to access git UI
+
+UI login info:
+
+- Username: max
+
+- Password: Max_pass123
+
+PR title : Added fox-and-grapes story
+
+PR pull from branch: story/fox-and-grapes (source)
+
+PR merge into branch: master (destination)
+
+
+----
+ Sign out of Git Portal UI as max user
+
+- Login as tom user
+
+- Go to story-blog repo and click on Pull Requests
+
+- Click on the PR - Added fox-and-grapes story
+
+- Click on Files changed tab and then the green drop down button Review. Add any approval message and click on the Approve button to approve the PR. You may need to scroll down to see the Approve button.
+
+---
+Great stuff!! The story has been approved! 👏. It's now time to Merge the Pull Request to make the story available in the master branch.
+
+
+Login as user sarah and merge the PR.
+
+- Username: sarah
+
+- Password: Sarah_pass123
+
+----
+- Logout of tom user
+
+- login with the user sarah
+
+- Click on the sarah/story-blog repo
+
+- Go to the Pull Request
+
+- Select the PR
+
+- Click on the green button Merge Pull Request and then confirm again by clicking on the green button Merge Pull Request to merge the PR
+
+- PR status should be shown as Merged
+
+----
+
