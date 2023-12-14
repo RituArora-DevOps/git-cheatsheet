@@ -143,5 +143,13 @@ Login as user sarah and merge the PR.
 Our local repository is not automatically aware of the pull and merge changes made to the remote repository. So we need to get these changes to our local repository  
 
  $ git fetch origin master 
+ This command will update origin/master branch in our local repository
 
 Now we need to merge origin/master to local master branch 
+ $ git merge origin/master 
+
+Instead of individually fetching and merging, we can also pull the origin/master branch.
+ $ git pull origin master 
+ This command fetches and merges the changes directly to our local master branch
+ 
+
