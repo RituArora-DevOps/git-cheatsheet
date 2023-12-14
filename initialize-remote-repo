@@ -138,3 +138,10 @@ Login as user sarah and merge the PR.
 
 ----
 
+# Fetching and Pullling 
+
+Our local repository is not automatically aware of the pull and merge changes made to the remote repository. So we need to get these changes to our local repository  
+
+ $ git fetch origin master 
+
+Now we need to merge origin/master to local master branch 
