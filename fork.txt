@@ -1,0 +1,30 @@
+for non-members, collaborators and people not part of their projects
+
+fork the repository (not owned by the user), add your changes in the forked repository on your local machine and
+then raise a pull request to pull your changes to the actual remote repository to provide your contribution 
+Then the actual owner of the repository will review the changes you made to accept or not and give feedback to you.
+
+In this way you can contribute to an open-source project
+
+Raise a PR from jon's forked repo to sarah's repo.
+
+
+Login to the Gitea UI as user Jon.
+
+Username: jon
+- Password: Jon_pass123
+
+Merge into(destination) branch: sarah:master
+
+Pull from(source) branch: jon:master
+
+PR name: Added fox-and-grapes story
+
+---
+Note that user jon can't merge PR to story-blog repo created in previous step because he only has Read permissions on sarah's repo.
+
+Hence you can't see a Merge button
+
+---
+Even though jon was not a part of team, he could contribute to story-blog repo for which he had only Read access by raising a PR.
+
