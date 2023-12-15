@@ -1,0 +1,101 @@
+Max and Sarah have been contributing stories. And they are available on the remote repository.
+
+Max's local repository has all the latest changes from the remote and is in sync with it. Check it out!
+
+Note: You can Login to git UI with sarah user and password: Sarah_pass123
+---
+During a meeting the team decides to add an Index file to the repository named story-index.txt which would contain a list of all stories written.
+
+It wasn't clear who would own this task, so Max decides to do it himself 💪 . He creates a file named story-index.txt and adds a list of stories to it. Check it out under the /home/max/story-blog directory.
+---
+Let's now stage and commit the story-index.txt file.
+
+Use the message - Add index of stories
+
+---
+ERROR
+git push origin master
+To http://git.example.com/sarah/story-blog.git
+ ! [rejected]        master -> master (fetch first)
+error: failed to push some refs to 'http://git.example.com/sarah/story-blog.git'
+hint: Updates were rejected because the remote contains work that you do
+hint: not have locally. This is usually caused by another repository pushing
+hint: to the same ref. You may want to first integrate the remote changes
+hint: (e.g., 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+
+---
+Looks like someone has pushed changes to the remote that needs to be pulled first, before we can push any of our own changes to remote.
+
+Pull the remote changes.
+
+ $ git pull origin master
+
+max (master)$ git pull origin master
+remote: Enumerating objects: 4, done.
+remote: Counting objects: 100% (4/4), done.
+remote: Compressing objects: 100% (3/3), done.
+remote: Total 3 (delta 1), reused 0 (delta 0), pack-reused 0
+Unpacking objects: 100% (3/3), 306 bytes | 306.00 KiB/s, done.
+From http://git.example.com/sarah/story-blog
+ * branch            master     -> FETCH_HEAD
+   f650b78..f5f88e6  master     -> origin/master
+hint: Pulling without specifying how to reconcile divergent branches is
+hint: discouraged. You can squelch this message by running one of the following
+hint: commands sometime before your next pull:
+hint: 
+hint:   git config pull.rebase false  # merge (the default strategy)
+hint:   git config pull.rebase true   # rebase
+hint:   git config pull.ff only       # fast-forward only
+hint: 
+hint: You can replace "git config" with "git config --global" to set a default
+hint: preference for all repositories. You can also pass --rebase, --no-rebase,
+hint: or --ff-only on the command line to override the configured default per
+hint: invocation.
+CONFLICT (add/add): Merge conflict in story-index.txt
+Auto-merging story-index.txt
+Automatic merge failed; fix conflicts and then commit the result.
+
+----
+We are now in a merge conflict 🙅‍♂️ ! Looks like there was already a file named story-index.txt on remote. Someone beat us to it! Let's find out who.
+
+Check the log of the origin/master branch to see what was the last commit on the repository and identify who added the story-index.txt file.
+
+Looks like Sarah already pushed a version of the file. When we pulled latest changes, git tried to merge Max's and Sarah's versions of the story-index.txt file, but was unsuccessful. However the local story-index.txt file is updated with changes from both Max and Sarah to allow you to merge manually.
+
+
+Inspect the file (use vi editor or just cat story-index.txt) and select the most appropriate statement below. The first section shows Max's data and the second section shows Sarah's data.
+
+cat story-index.txt 
+<<<<<<< HEAD
+1. The Lion and the Mooose
+2. The Frogs and the Ox
+3. The Fox and the Grapes
+4. The Donkey and the Dog
+=======
+1. The Lion and the Mouse
+2. The Frogs and the Ox
+3. The Fox and the Grapes
+>>>>>>> f5f88e68ad735230bc0013335b626eed54bdfde2
+
+Looks like both of them were partially wrong. Let's fix the file to remove the errors done by each of them. Let's manually merge changes from both users.
+
+Update the contents of the file (use vi editor) to keep the correct version of the Lion and Mouse story and keep the Donkey and Dog story as well. Remove all the extra lines added by GIT
+
+max (master)$ vi story-index.txt 
+max (master)$ git add .
+max (master)$ git commit -m "Resolved merge conflicts and merged story index"
+[master 076fa71] Resolved merge conflicts and merged story index
+max (master)$ git push origin master
+Enumerating objects: 9, done.
+Counting objects: 100% (9/9), done.
+Delta compression using up to 36 threads
+Compressing objects: 100% (6/6), done.
+Writing objects: 100% (6/6), 628 bytes | 628.00 KiB/s, done.
+Total 6 (delta 3), reused 0 (delta 0), pack-reused 0
+remote: . Processing 1 references
+remote: Processed 1 references in total
+To http://git.example.com/sarah/story-blog.git
+   f5f88e6..076fa71  master -> master
+
+   
